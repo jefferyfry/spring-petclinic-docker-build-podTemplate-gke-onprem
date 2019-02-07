@@ -1,7 +1,8 @@
 
 pipeline {
   agent {
-    gkeonprem {
+    kubernetes {
+        cloud 'gkeonprem'
         label 'docker-build-pod'
         yamlFile 'podTemplate/spring-petclinic-docker-build.yaml'
     }
