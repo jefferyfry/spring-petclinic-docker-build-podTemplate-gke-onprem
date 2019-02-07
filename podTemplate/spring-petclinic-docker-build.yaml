@@ -9,6 +9,11 @@ spec:
     command:
     - cat
     tty: true
+  - name: gcloud-kubectl
+    image: jefferyfry/gcloud-kubectl:latest
+    command:
+    - cat
+    tty: true  
   - name: docker
     image: docker:1.11
     imagePullPolicy: Always
