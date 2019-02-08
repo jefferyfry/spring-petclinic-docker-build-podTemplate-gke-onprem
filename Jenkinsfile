@@ -32,7 +32,7 @@ pipeline {
         }
       }
     }
-    stage('Launch on Staging Cluster') {
+    stage('Staging') {
       steps {
         container('gcloud-kubectl'){
           withCredentials([string(credentialsId: 'gkeonprem-access-token', variable: 'TOKEN')]) {
