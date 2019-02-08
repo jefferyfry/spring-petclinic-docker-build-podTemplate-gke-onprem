@@ -41,7 +41,7 @@ pipeline {
                  sleep 5
                  kubectl --token=${TOKEN} create namespace spring-petclinic-docker-build
                  kubectl --token=${TOKEN} run spring-petclinic-docker-build --image=jefferyfry/spring-petclinic:latest --port 8080 --namespace spring-petclinic-docker-build
-                 kubectl --token=${TOKEN} expose deployment spring-petclinic-docker-build --type=LoadBalancer --port 8092 --target-port 8080 --namespace spring-petclinic-docker-build
+                 kubectl --token=${TOKEN} expose deployment spring-petclinic-docker-build --type=LoadBalancer --load-balancer-ip=10.0.10.253 --port 8092 --target-port 8080 --namespace spring-petclinic-docker-build
                  while [ -z "$url" ]; do url=$(kubectl --token=${TOKEN} describe service spring-petclinic-docker-build --namespace spring-petclinic-docker-build | grep 'LoadBalancer Ingress:' | awk '{printf "http://%s:8092",$3;}'); sleep 2; done
                  echo "$url"
                  echo "Spring PetClinic Launched!"
