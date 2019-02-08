@@ -35,11 +35,9 @@ pipeline {
     stage('Launch on Staging Cluster') {
       steps {
         container('gcloud-kubectl'){
-          withCredentials([file(credentialsId: 'key-sa', variable: 'GC_KEY')]) {
-            sh "gcloud auth activate-service-account --key-file=${GC_KEY}"
+          withCredentials([file(credentialsId: 'gkeonprem-access-token', variable: 'TOKEN')]) {
+            sh "kubectl --token=${TOKEN"
             sh '''
-                 gcloud config set project partner-demo-dev
-                 gcloud container clusters get-credentials csp-gke --zone us-east1-b
                  kubectl delete namespace spring-petclinic-docker-build || true
                  sleep 5
                  kubectl create namespace spring-petclinic-docker-build
