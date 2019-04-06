@@ -42,7 +42,7 @@ pipeline {
                  kubectl --token=${TOKEN} create namespace spring-petclinic-docker-build
                  kubectl --token=${TOKEN} create deployment spring-petclinic-docker-build --image=jefferyfry/spring-petclinic:latest --namespace spring-petclinic-docker-build
                  kubectl --token=${TOKEN} apply -f petclinic-service.yaml
-                 echo "http://139.178.70.6:8080/"
+                 echo "http://10.0.10.253:8080/"
                  echo "Spring PetClinic Launched!"
                  
             '''
