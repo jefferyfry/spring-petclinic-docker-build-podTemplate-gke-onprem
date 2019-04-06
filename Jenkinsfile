@@ -3,9 +3,8 @@ pipeline {
   agent {
     kubernetes {
         cloud 'gkeonprem'
-        label 'docker-build-pod'
-        yamlFile 'podTemplate/spring-petclinic-docker-build.yaml'
-        idleMinutes 120
+        label 'docker-build-pod-onprem'
+        yamlFile 'podTemplate/spring-petclinic-docker-build-onprem.yaml'
     }
   }
   stages {
