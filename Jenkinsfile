@@ -5,6 +5,7 @@ pipeline {
         cloud 'gkeonprem'
         label 'docker-build-pod-onprem'
         yamlFile 'podTemplate/spring-petclinic-docker-build-onprem.yaml'
+        idleMinutes 120
     }
   }
   stages {
